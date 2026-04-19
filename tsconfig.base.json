@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@msdt/map-engine": ["libs/msdt-map-engine/src/index.ts"],
+      "@msdt/ui-kit": ["libs/msdt-ui-kit/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

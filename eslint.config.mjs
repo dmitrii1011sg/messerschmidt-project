@@ -5,7 +5,14 @@ export default [
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist', '**/out-tsc'],
+    ignores: [
+      '**/dist',
+      '**/node_modules',
+      '**/.nx',
+      '**/.vscode',
+      '**/.idea',
+      '**/.angular',
+    ],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -26,6 +33,64 @@ export default [
     },
   },
   {
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    rules: {
+      'default-case': [
+        'error',
+        {
+          commentPattern: '^default$',
+        },
+      ],
+      'no-console': [
+        'error',
+        {
+          allow: ['warn', 'error'],
+        },
+      ],
+      'spaced-comment': ['warn', 'always'],
+      'no-duplicate-imports': [
+        'error',
+        {
+          includeExports: true,
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        {
+          allowExpressions: true,
+        },
+      ],
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+      '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        {
+          accessibility: 'no-public',
+          overrides: {
+            accessors: 'no-public',
+            constructors: 'no-public',
+            methods: 'no-public',
+            properties: 'no-public',
+            parameterProperties: 'no-public',
+          },
+        },
+      ],
+      'require-await': 'warn',
+    },
+  },
+  {
     files: [
       '**/*.ts',
       '**/*.tsx',
@@ -36,7 +101,9 @@ export default [
       '**/*.cjs',
       '**/*.mjs',
     ],
-    // Override or add rules here
-    rules: {},
+    rules: {
+      eqeqeq: ['error', 'always'],
+      'newline-before-return': 'error',
+    },
   },
 ];
