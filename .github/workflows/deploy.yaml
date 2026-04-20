@@ -32,6 +32,8 @@ jobs:
 
       - name: Build
         run: npx nx build messerschmidt-project --base-href /messerschmidt-project/
+        env:
+          NG_APP_MAPTILER_KEY: ${{ secrets.NG_APP_MAPTILER_KEY }}
 
       - name: Fix for SPA (404 page)
         run: cp dist/apps/messerschmidt-project/browser/index.html dist/apps/messerschmidt-project/browser/404.html
