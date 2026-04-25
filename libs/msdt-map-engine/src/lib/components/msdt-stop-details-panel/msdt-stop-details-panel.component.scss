@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  position: absolute;
+  z-index: 9999;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  pointer-events: auto;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 75dvh;
+  transform: translateY(100%);
+}
+
+:host(.is-open) {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  :host {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 440px;
+    height: 100%;
+    transform: translateX(-100%);
+  }
+
+  :host(.is-open) {
+    transform: translateX(0);
+  }
+}
+
+.msdt-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.msdt-scrollbar::-webkit-scrollbar-thumb {
+  background: #8b4513;
+  border-radius: 10px;
+}

@@ -1,0 +1,38 @@
+<mgl-map
+  [mapStyle]="mapLibreSource"
+  [zoom]="[4]"
+  [center]="[129.7, 62.0]"
+  [pitch]="[45]"
+  [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
+  [maxBounds]="bounds"
+  class="absolute inset-0 h-full w-full bg-slate-100"
+  (mapLoad)="onMapLoad($event)"
+>
+  <mgl-raster-source
+    id="messerschmidt-source"
+    type="raster"
+    [tiles]="['https://mapwarper.net/mosaics/tile/2476/{z}/{x}/{y}.png']"
+    [tileSize]="256"
+  ></mgl-raster-source>
+
+  <mgl-raster-dem-source
+    id="terrain-source"
+    [tiles]="[mapLibreTerrainSource]"
+    [tileSize]="256"
+  ></mgl-raster-dem-source>
+
+  <mgl-layer
+    id="messerschmidt-layer"
+    type="raster"
+    source="messerschmidt-source"
+    [paint]="{
+      'raster-opacity': opacity(),
+      'raster-fade-duration': 300,
+    }"
+  ></mgl-layer>
+
+  @for (stop of stops(); track stop.id) {
+    <msdt-map-marker [stop]="stop" (selectMarker)="onMarkerClick($event)">
+    </msdt-map-marker>
+  }
+</mgl-map>

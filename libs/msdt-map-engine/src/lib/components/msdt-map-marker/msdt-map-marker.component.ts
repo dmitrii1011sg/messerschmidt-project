@@ -1,13 +1,6 @@
 import { Component, input, output } from '@angular/core';
 import { MarkerComponent } from '@maplibre/ngx-maplibre-gl';
-import { LngLatLike } from 'maplibre-gl';
-
-export interface MsdtPoint {
-  id: number;
-  name: string;
-  coordinates: LngLatLike;
-  description: string;
-}
+import { MsdtPoint } from '../../models/msdt-point.model';
 
 @Component({
   selector: 'msdt-map-marker',

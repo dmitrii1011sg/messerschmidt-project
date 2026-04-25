@@ -1,0 +1,110 @@
+@if (stop(); as data) {
+  <div
+    class="flex h-full flex-col bg-[#F4F1EA] shadow-2xl border-t md:border-t-0 md:border-r border-[#8B4513]/30 rounded-t-3xl md:rounded-none"
+    cdkDrag
+    cdkDragLockAxis="y"
+    (cdkDragEnded)="onDragEnd($event)"
+  >
+    <div
+      class="h-1.5 w-12 bg-[#8B4513]/20 rounded-full mx-auto mt-3 mb-1 md:hidden"
+      cdkDragHandle
+    ></div>
+
+    <div
+      class="flex items-start justify-between px-6 py-4 border-b border-[#8B4513]/10 gap-4"
+    >
+      <div class="flex flex-col min-w-0">
+        <span
+          class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8B4513] mb-1"
+        >
+          {{ data.date | date: 'dd.MM.yyyy' }}
+        </span>
+        <h2
+          class="font-serif text-2xl font-bold text-[#3E2723] leading-tight break-words"
+        >
+          {{ data.name }}
+        </h2>
+      </div>
+
+      <button
+        (click)="selectionService.unselect()"
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#8B4513]/5 text-[#5D4037] transition-all active:scale-90 hover:bg-[#8B4513]/10 mt-1"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-6 msdt-scrollbar overscroll-contain">
+      <div
+        class="mb-5 font-mono text-xs text-[#8B4513] flex items-center gap-2 border-b border-[#8B4513]/10 pb-3"
+      >
+        <span class="opacity-50">Координаты:</span>
+        {{ data.coordinates[0].toFixed(4) }}°E,
+        {{ data.coordinates[1].toFixed(4) }}°N
+      </div>
+
+      @if (data.content.quote) {
+        <blockquote
+          class="relative my-6 pt-8 border-l-4 border-[#8B4513]/40 bg-[#8B4513]/5 py-4 pl-5 pr-4 rounded-r-lg"
+        >
+          <svg
+            class="absolute top-2 left-2 h-6 w-6 text-[#8B4513]/20"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            />
+          </svg>
+          <p
+            class="font-serif text-lg italic text-[#5D4037] relative z-10 leading-relaxed"
+          >
+            {{ data.content.quote }}
+          </p>
+        </blockquote>
+      }
+
+      <div class="prose prose-slate max-w-none text-justify">
+        <p
+          class="font-serif text-[1.15rem] leading-relaxed text-[#3E2723] first-letter:float-left first-letter:text-5xl first-letter:pr-2 first-letter:font-serif first-letter:font-bold first-letter:text-[#8B4513] first-letter:mt-[-4px]"
+        >
+          {{ data.content.description }}
+        </p>
+      </div>
+
+      @if (data.images?.length) {
+        <div class="mt-8 flex flex-col gap-8">
+          @for (img of data.images; track img.url) {
+            <figure class="flex flex-col gap-3">
+              <img
+                [src]="'assets/images/stops/' + img.url"
+                [alt]="img.caption || data.name"
+                class="w-full rounded-xl border border-[#8B4513]/20 shadow-md object-cover"
+                loading="lazy"
+              />
+              @if (img.caption) {
+                <figcaption
+                  class="text-center font-serif text-sm italic text-[#5D4037]/80 px-4"
+                >
+                  {{ img.caption }}
+                </figcaption>
+              }
+            </figure>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

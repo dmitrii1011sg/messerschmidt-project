@@ -1,1 +1,1 @@
-export * from './lib/msdt-ui-kit/msdt-ui-kit';
+export * from './lib/msdt-opacity-slider/msdt-opacity-slider.component';

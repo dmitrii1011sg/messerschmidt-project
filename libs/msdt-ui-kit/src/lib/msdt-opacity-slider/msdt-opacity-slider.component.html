@@ -1,0 +1,12 @@
+<div class="relative flex items-center py-2">
+  <input
+    type="range"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [value]="value()"
+    (input)="handleInput($event)"
+    class="peer h-2 w-full appearance-none rounded-full bg-[#D7CCC8] outline-none cursor-pointer accent-[#8B4513] focus:ring-2 focus:ring-[#8B4513]/30 transition-all"
+    aria-label="{{ label() }}"
+  />
+</div>

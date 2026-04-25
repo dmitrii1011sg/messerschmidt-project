@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  ChangeDetectionStrategy,
-  signal,
-} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import {
   MapComponent as MglMap,
   RasterSourceComponent,
@@ -12,10 +7,10 @@ import {
 } from '@maplibre/ngx-maplibre-gl';
 import { MsdtMapService } from './services/msdt-map.service';
 import { LngLatBounds, Map } from 'maplibre-gl';
-import {
-  MsdtMapMarkerComponent,
-  MsdtPoint,
-} from './components/msdt-map-marker/msdt-map-marker.component';
+import { MsdtMapMarkerComponent } from './components/msdt-map-marker/msdt-map-marker.component';
+import { MsdtStopSelectionService } from './services/msdt-stop-selection.service';
+import { MsdtStopDataService } from './services/msdt-stop-data.service';
+import { MsdtPoint } from './models/msdt-point.model';
 
 @Component({
   selector: 'msdt-map',
@@ -27,57 +22,14 @@ import {
     LayerComponent,
     MsdtMapMarkerComponent,
   ],
-  template: `
-    <mgl-map
-      [mapStyle]="mapLibreSource"
-      [zoom]="[4]"
-      [center]="[129.7, 62.0]"
-      [pitch]="[45]"
-      [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
-      [maxBounds]="bounds"
-      class="absolute inset-0 h-full w-full bg-slate-100"
-      (mapLoad)="onMapLoad($event)"
-    >
-      <mgl-raster-source
-        id="messerschmidt-source"
-        type="raster"
-        [tiles]="['https://mapwarper.net/mosaics/tile/2476/{z}/{x}/{y}.png']"
-        [tileSize]="256"
-      ></mgl-raster-source>
-
-      <mgl-raster-dem-source
-        id="terrain-source"
-        [tiles]="[mapLibreTerrainSource]"
-        [tileSize]="256"
-      ></mgl-raster-dem-source>
-
-      <mgl-layer
-        id="messerschmidt-layer"
-        type="raster"
-        source="messerschmidt-source"
-        [paint]="{
-          'raster-opacity': opacity(),
-          'raster-fade-duration': 300,
-        }"
-      ></mgl-layer>
-
-      @for (stop of stops(); track stop.id) {
-        <msdt-map-marker [stop]="stop"> </msdt-map-marker>
-      }
-    </mgl-map>
-  `,
-  styles: `
-    :host {
-      display: block;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-  `,
+  templateUrl: 'msdt-map.component.html',
+  styleUrls: ['msdt-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MsdtMapComponent {
   private readonly mapService = inject(MsdtMapService);
+  protected readonly stopService = inject(MsdtStopDataService);
+  protected readonly selectionService = inject(MsdtStopSelectionService);
   protected readonly opacity = this.mapService.historicalOpacity;
   protected readonly bounds = new LngLatBounds(
     [106.6285, 56.9571],
@@ -87,37 +39,16 @@ export class MsdtMapComponent {
   readonly mapLibreSource: string = `https://api.maptiler.com/maps/hybrid/style.json?key=${(import.meta as any).env.NG_APP_MAPTILER_KEY}`;
   readonly mapLibreTerrainSource: string = `https://api.maptiler.com/tiles/terrain-rgb-v2/{z}/{x}/{y}.webp?key=${(import.meta as any).env.NG_APP_MAPTILER_KEY}`;
 
-  protected readonly stops = signal<MsdtPoint[]>([
-    {
-      id: 1,
-      name: 'Красноярово',
-      coordinates: [107.4565, 57.3375],
-      description: 'Красноярово',
-    },
-    {
-      id: 2,
-      name: 'Макарово',
-      coordinates: [107.8231, 57.4835],
-      description: 'Макарово',
-    },
-  ]);
+  protected readonly stops = this.stopService.stops;
 
   onMapLoad(map: Map): void {
     map.setTerrain({
       source: 'terrain-source',
-      exaggeration: 1.8,
+      exaggeration: 1,
     });
   }
 
   onMarkerClick(stop: MsdtPoint): void {
-    console.warn(`Нажата остановка: ${stop.name}`);
-    alert(`${stop.name}: ${stop.description}`);
+    this.selectionService.select(stop.id);
   }
-
-  // onMapClick(event: any): void {
-  //   const coords = event.lngLat;
-  //   // console.log(
-  //   //   `[${coords.lng.toFixed(4)}, ${coords.lat.toFixed(4)}]`,
-  //   // );
-  // }
 }
