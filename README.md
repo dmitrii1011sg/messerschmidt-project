@@ -1,101 +1,80 @@
-# MesserschmidtProject
+# Визуализация экспедиции Д. Г. Мессершмидта по Лене (23 - 27 сентября 1723 г.)
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+[![Project Status: Active](https://img.shields.io/badge/Project%20Status-Active-green.svg)](https://github.com/dmitrii1011sg/messerschmidt-project)
+[![Tech: Angular](https://img.shields.io/badge/Framework-Angular%2017%2B-red.svg)](https://angular.io/)
+[![Map: MapLibre](https://img.shields.io/badge/Map-MapLibre%20GL-blue.svg)](https://maplibre.org/)
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+Данный проект представляет собой интерактивную геоинформационную систему, созданную для визуализации маршрута первой научной экспедиции в Сибирь под руководством **Даниэля Готлиба Мессершмидта**.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+Проект подготовлен специально для представления в рамках **Миллеровских чтений (2026)**.
 
-## Run tasks
+---
 
-To run the dev server for your app, use:
+## 🌍 Live Demo
 
-```sh
-npx nx serve messerschmidt-project
-```
+Вы можете ознакомиться с текущей версией проекта по ссылке:  
+👉 https://dmitrii1011sg.github.io/messerschmidt-project/
 
-To create a production bundle:
+---
 
-```sh
-npx nx build messerschmidt-project
-```
+## 🖋 О проекте
 
-To see all available targets to run for a project, run:
+Основная цель работы — совместить исторические данные из дневников Мессершмидта с современными технологиями картографии. Приложение позволяет проследить путь экспедиции вдоль реки Лена, изучить места остановок и сопоставить зарисовку реки Мессершмидта с современной картой.
 
-```sh
-npx nx show project messerschmidt-project
-```
+### Основные возможности:
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+- **Интерактивный 3D-маршрут:** Визуализация пути с использованием сплайновой интерполяции для сглаживания русла реки.
+- **Исторические наложения:** Интеграция архивной карты (через MapWarper) поверх современных спутниковых снимков.
+- **Кластеризация точек:** Удобная навигация по отмеченным местам.
+- **Информационные карточки:** Детальное описание каждой точки маршрута, включая заметки и изображения из дневников (в процессе).
+- **Адаптивный интерфейс:** Полная поддержка мобильных устройств и десктопов.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+---
 
-## Add new projects
+## 🛠 Технологический стек
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+Проект построен на современном фронтенд-стеке с упором на производительность и математическую точность:
 
-Use the plugin's generator to create new projects.
+- **Core:** [Angular](https://angular.io/) (v17+)
+- **Map Engine:** [MapLibre GL JS](https://maplibre.org/) & [ngx-maplibre-gl](https://github.com/maplibre/ngx-maplibre-gl)
+- **GIS Math:** [Turf.js](https://turfjs.org/) (обработка геометрии, сглаживание линий Bezier)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Maps & Terrain:** [MapTiler](https://www.maptiler.com/) (RGB Terrain, Hybrid Satellite)
+- **Historical Data:** [MapWarper](https://mapwarper.net/) (привязка растровых исторических карт)
 
-To generate a new application, use:
+---
 
-```sh
-npx nx g @nx/angular:app demo
-```
+## 🚀 Быстрый запуск
 
-To generate a new library, use:
+### Предварительные требования
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
+Убедитесь, что у вас установлены [Node.js](https://nodejs.org/) и [Angular CLI](https://angular.io/cli).
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Установка и запуск
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/dmitrii1011sg/messerschmidt-project.git
+   cd messerschmidt-project
+   ```
+2. Установите зависимости:
+   ```bash
+   pnpm install
+   ```
+3. Создайте файл окружения и добавьте ваш ключ MapTiler:
+   ````.env
+    # Создайте .env
+    NG_APP_MAPTILER_KEY=ваш_ключ_здесь
+   ```npx nx serve messerschmidt-project
+   ````
+4. Запустите сервер:
+   ```bash
+   npx nx serve messerschmidt-project
+   ```
 
-## Set up CI!
+## 🎓 Конференция
 
-### Step 1
+Проект разработан и представлен в рамках конференции "Миллеровские чтения". Работа демонстрирует применение цифровых гуманитарных наук (Digital Humanities) для сохранения и популяризации культурного наследия Сибири.
 
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Автор: Горшков Дмитрий (СПбГЭТУ «ЛЭТИ»)
+Специальность: Прикладная математика и информатика
