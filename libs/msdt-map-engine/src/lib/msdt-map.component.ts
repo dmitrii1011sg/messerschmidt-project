@@ -7,10 +7,9 @@ import {
 } from '@maplibre/ngx-maplibre-gl';
 import { MsdtMapService } from './services/msdt-map.service';
 import { LngLatBounds, Map } from 'maplibre-gl';
-import { MsdtMapMarkerComponent } from './components/msdt-map-marker/msdt-map-marker.component';
 import { MsdtStopSelectionService } from './services/msdt-stop-selection.service';
 import { MsdtStopDataService } from './services/msdt-stop-data.service';
-import { MsdtPoint } from './models/msdt-point.model';
+import { MsdtMapLayersComponent } from './components/msdt-map-layers/msdt-map-layers.component';
 
 @Component({
   selector: 'msdt-map',
@@ -20,7 +19,7 @@ import { MsdtPoint } from './models/msdt-point.model';
     RasterSourceComponent,
     RasterDemSourceComponent,
     LayerComponent,
-    MsdtMapMarkerComponent,
+    MsdtMapLayersComponent,
   ],
   templateUrl: 'msdt-map.component.html',
   styleUrls: ['msdt-map.component.scss'],
@@ -40,15 +39,18 @@ export class MsdtMapComponent {
   readonly mapLibreTerrainSource: string = `https://api.maptiler.com/tiles/terrain-rgb-v2/{z}/{x}/{y}.webp?key=${(import.meta as any).env.NG_APP_MAPTILER_KEY}`;
 
   protected readonly stops = this.stopService.stops;
+  protected readonly route = this.stopService.routePath;
 
   onMapLoad(map: Map): void {
+    this.mapService.setMapInstance(map);
     map.setTerrain({
       source: 'terrain-source',
       exaggeration: 1,
     });
   }
 
-  onMarkerClick(stop: MsdtPoint): void {
-    this.selectionService.select(stop.id);
+  onMapClick(event: any): void {
+    // const coords = event.lngLat;
+    // console.log(`[${coords.lng.toFixed(4)}, ${coords.lat.toFixed(4)}]`);
   }
 }

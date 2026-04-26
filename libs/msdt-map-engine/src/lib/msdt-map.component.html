@@ -3,10 +3,12 @@
   [zoom]="[4]"
   [center]="[129.7, 62.0]"
   [pitch]="[45]"
+  [maxPitch]="85"
   [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
   [maxBounds]="bounds"
   class="absolute inset-0 h-full w-full bg-slate-100"
   (mapLoad)="onMapLoad($event)"
+  (mapClick)="onMapClick($event)"
 >
   <mgl-raster-source
     id="messerschmidt-source"
@@ -31,8 +33,5 @@
     }"
   ></mgl-layer>
 
-  @for (stop of stops(); track stop.id) {
-    <msdt-map-marker [stop]="stop" (selectMarker)="onMarkerClick($event)">
-    </msdt-map-marker>
-  }
+  <msdt-map-layers [stops]="stops()" [routeCoords]="route()"></msdt-map-layers>
 </mgl-map>

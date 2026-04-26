@@ -85,20 +85,47 @@
       </div>
 
       @if (data.images?.length) {
-        <div class="mt-8 flex flex-col gap-8">
+        <div class="mt-8 flex flex-col gap-6 pb-4">
           @for (img of data.images; track img.url) {
-            <figure class="flex flex-col gap-3">
+            <figure
+              class="relative group overflow-hidden rounded-xl border border-[#8B4513]/30 shadow-lg bg-[#3E2723]"
+            >
               <img
-                [src]="'assets/images/stops/' + img.url"
+                [src]="'images/' + img.url"
                 [alt]="img.caption || data.name"
-                class="w-full rounded-xl border border-[#8B4513]/20 shadow-md object-cover"
+                class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
               />
+
+              <button
+                (click)="onFlyTo(data.coordinates)"
+                class="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#F4F1EA]/90 text-[#8B4513] shadow-md backdrop-blur-md transition-all border border-[#8B4513]/20 hover:bg-[#8B4513] hover:text-[#F4F1EA] hover:scale-110 active:scale-95 focus:outline-none"
+                title="Переместиться к месту съемки"
+              >
+                <svg
+                  class="h-4 w-4 relative right-[1px]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                  />
+                </svg>
+              </button>
+
               @if (img.caption) {
                 <figcaption
-                  class="text-center font-serif text-sm italic text-[#5D4037]/80 px-4"
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#27160D]/95 via-[#27160D]/70 to-transparent p-4 pt-12 pointer-events-none"
                 >
-                  {{ img.caption }}
+                  <p
+                    class="font-serif text-sm italic text-[#F4F1EA] drop-shadow-md leading-relaxed"
+                  >
+                    {{ img.caption }}
+                  </p>
                 </figcaption>
               }
             </figure>

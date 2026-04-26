@@ -1,0 +1,105 @@
+@if (routeGeoJson.features?.length || routeGeoJson.geometry) {
+  <mgl-geojson-source
+    id="route-source"
+    [data]="routeGeoJson"
+    [lineMetrics]="true"
+  ></mgl-geojson-source>
+
+  <mgl-layer
+    id="msdt-line-shadow"
+    type="line"
+    source="route-source"
+    [paint]="{
+      'line-color': '#000',
+      'line-width': 10,
+      'line-blur': 15,
+      'line-opacity': 0.3,
+    }"
+  ></mgl-layer>
+
+  <mgl-layer
+    id="msdt-line-halo"
+    type="line"
+    source="route-source"
+    [paint]="{
+      'line-color': '#F4F1EA',
+      'line-width': 5,
+      'line-opacity': 0.8,
+    }"
+  ></mgl-layer>
+
+  <mgl-layer
+    id="msdt-line-main"
+    type="line"
+    source="route-source"
+    [layout]="{ 'line-cap': 'round', 'line-join': 'round' }"
+    [paint]="{
+      'line-color': '#5D4037',
+      'line-width': 3,
+      'line-dasharray': [2, 1],
+    }"
+  ></mgl-layer>
+}
+
+@if (pointsGeoJson.features?.length > 0) {
+  <mgl-geojson-source
+    id="points-source"
+    [data]="pointsGeoJson"
+    [cluster]="true"
+    [clusterMaxZoom]="14"
+    [clusterRadius]="25"
+  ></mgl-geojson-source>
+
+  <mgl-layer
+    id="clusters"
+    type="circle"
+    source="points-source"
+    [filter]="['has', 'point_count']"
+    [paint]="{
+      'circle-color': [
+        'step',
+        ['get', 'point_count'],
+        '#D4A373',
+        5,
+        '#A98467',
+        15,
+        '#6B705C',
+      ],
+      'circle-radius': ['step', ['get', 'point_count'], 15, 5, 15, 15, 25],
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#F4F1EA',
+    }"
+    (layerClick)="onClusterClick($event)"
+    (layerMouseEnter)="cursorToPointer($event)"
+    (layerMouseLeave)="cursorToDefault($event)"
+  ></mgl-layer>
+
+  <mgl-layer
+    id="cluster-count"
+    type="symbol"
+    source="points-source"
+    [filter]="['has', 'point_count']"
+    [layout]="{
+      'text-field': '{point_count_abbreviated}',
+      'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+      'text-size': 14,
+    }"
+    [paint]="{ 'text-color': '#ffffff' }"
+  ></mgl-layer>
+
+  <mgl-layer
+    id="unclustered-point"
+    type="circle"
+    source="points-source"
+    [filter]="['!', ['has', 'point_count']]"
+    [paint]="{
+      'circle-color': '#8B4513',
+      'circle-radius': 7,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#F4F1EA',
+    }"
+    (layerClick)="onPointClick($event)"
+    (layerMouseEnter)="cursorToPointer($event)"
+    (layerMouseLeave)="cursorToDefault($event)"
+  ></mgl-layer>
+}

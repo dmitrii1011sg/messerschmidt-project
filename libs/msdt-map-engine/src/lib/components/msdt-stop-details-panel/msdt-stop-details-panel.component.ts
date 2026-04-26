@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MsdtStopSelectionService } from '../../services/msdt-stop-selection.service';
 import { MsdtStopDataService } from '../../services/msdt-stop-data.service';
 import { DragDropModule, CdkDragEnd } from '@angular/cdk/drag-drop';
+import { MsdtMapService } from '../../services/msdt-map.service';
 
 @Component({
   selector: 'msdt-stop-details',
@@ -12,6 +13,7 @@ import { DragDropModule, CdkDragEnd } from '@angular/cdk/drag-drop';
   styleUrls: ['msdt-stop-details-panel.component.scss'],
 })
 export class MsdtStopDetailsComponent {
+  private readonly mapService = inject(MsdtMapService);
   protected readonly selectionService = inject(MsdtStopSelectionService);
   private readonly dataService = inject(MsdtStopDataService);
 
@@ -33,5 +35,9 @@ export class MsdtStopDetailsComponent {
       this.selectionService.unselect();
     }
     event.source._dragRef.reset();
+  }
+
+  onFlyTo(coordinates: [number, number]): void {
+    this.mapService.flyTo(coordinates, 15);
   }
 }
