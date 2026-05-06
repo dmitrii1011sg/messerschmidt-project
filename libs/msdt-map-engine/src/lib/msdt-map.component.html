@@ -1,9 +1,11 @@
 <mgl-map
   [mapStyle]="mapLibreSource"
   [zoom]="[4]"
+  [minZoom]="9"
+  [maxZoom]="12"
   [center]="[129.7, 62.0]"
   [pitch]="[45]"
-  [maxPitch]="85"
+  [maxPitch]="45"
   [canvasContextAttributes]="{ preserveDrawingBuffer: true }"
   [maxBounds]="bounds"
   class="absolute inset-0 h-full w-full bg-slate-100"
@@ -33,5 +35,12 @@
     }"
   ></mgl-layer>
 
-  <msdt-map-layers [stops]="stops()" [routeCoords]="route()"></msdt-map-layers>
+  <msdt-map-layers
+    [stops]="stops()"
+    [routeCoords]="route()"
+    [filter]="currentMapFilter()"
+  ></msdt-map-layers>
 </mgl-map>
+<msdt-map-legends
+  (filterChanged)="currentMapFilter.set($event)"
+></msdt-map-legends>

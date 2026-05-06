@@ -1,0 +1,80 @@
+
+<div class="absolute z-20 right-4 top-64 flex flex-col items-end md:bottom-6 md:right-6 md:top-auto">
+  
+  <button
+    (click)="isOpen.set(!isOpen())"
+    class="relative mb-2 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#8B4513]/10 bg-[#F4F1EA]/95 text-[#8B4513] shadow-xl backdrop-blur-md transition-transform active:scale-95 md:hidden"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    
+    @if (activeCategories().length > 0) {
+      <span class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#8B4513] text-[10px] font-bold text-[#F4F1EA]">
+        {{ activeCategories().length }}
+      </span>
+    }
+  </button>
+
+  <div 
+    class="w-64 select-none rounded-xl border-2 border-[#8B4513]/10 bg-[#F4F1EA]/95 p-4 shadow-xl backdrop-blur-md md:block"
+    [class.hidden]="!isOpen()"
+  >
+    <div class="mb-3 flex items-center justify-between border-b border-[#8B4513]/10 pb-2">
+      <div class="flex items-center gap-2">
+        <h3 class="font-serif text-xs font-bold uppercase tracking-wider text-[#8B4513]">
+          Легенда
+        </h3>
+        <span class="rounded-full bg-[#D7CCC8] px-1.5 py-0.5 font-mono text-[10px] font-bold text-[#3E2723]">
+          {{ activeCategories().length }}
+        </span>
+      </div>
+
+      <button class="text-[#8B4513] opacity-50 transition-opacity hover:opacity-100 md:hidden" (click)="isOpen.set(false)">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="space-y-1.5 max-h-[50vh] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-[#8B4513]/20">
+      @for (cat of categories; track cat.id) {
+        <button
+          (click)="toggleCategory(cat.id)"
+          class="group flex w-full items-center rounded-lg p-2 transition-all duration-200 hover:bg-[#8B4513]/5"
+          [class.opacity-50]="!activeCategories().includes(cat.id)"
+        >
+          <div class="relative flex h-8 w-8 items-center justify-center rounded-md bg-[#D7CCC8]/40 transition-transform group-hover:scale-110">
+            <img [src]="cat.icon" [alt]="cat.label" class="z-10 h-5 w-5 object-contain" />
+            <div class="absolute bottom-0 h-1 w-full rounded-b-md opacity-40" [style.backgroundColor]="cat.color"></div>
+          </div>
+
+          <span class="ml-3 font-serif text-sm font-medium text-[#5D4037]">
+            {{ cat.label }}
+          </span>
+
+          <div class="ml-auto flex items-center">
+            <div
+              class="flex h-4 w-4 items-center justify-center rounded border transition-colors"
+              [class.bg-[#8B4513]]="activeCategories().includes(cat.id)"
+              [class.border-[#8B4513]/30]="!activeCategories().includes(cat.id)"
+              [class.border-transparent]="activeCategories().includes(cat.id)"
+            >
+              @if (activeCategories().includes(cat.id)) {
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-[#F4F1EA]" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              }
+            </div>
+          </div>
+        </button>
+      }
+    </div>
+
+    @if (activeCategories().length === 0) {
+      <p class="mt-3 text-center font-serif text-[10px] italic text-[#8B4513] opacity-70">
+        Ни одна категория не выбрана
+      </p>
+    }
+  </div>
+</div>

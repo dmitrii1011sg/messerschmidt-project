@@ -21,6 +21,7 @@ export interface MsdtPointContent {
 export interface MsdtPoint {
   id: string;
   name: string;
+  origin_name: string;
   date?: string;
   coordinates: [number, number];
   category: MsdtPointCategory;

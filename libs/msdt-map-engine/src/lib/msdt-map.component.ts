@@ -1,4 +1,9 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  inject,
+  ChangeDetectionStrategy,
+  signal,
+} from '@angular/core';
 import {
   MapComponent as MglMap,
   RasterSourceComponent,
@@ -6,10 +11,11 @@ import {
   RasterDemSourceComponent,
 } from '@maplibre/ngx-maplibre-gl';
 import { MsdtMapService } from './services/msdt-map.service';
-import { LngLatBounds, Map } from 'maplibre-gl';
+import { FilterSpecification, LngLatBounds, Map } from 'maplibre-gl';
 import { MsdtStopSelectionService } from './services/msdt-stop-selection.service';
 import { MsdtStopDataService } from './services/msdt-stop-data.service';
 import { MsdtMapLayersComponent } from './components/msdt-map-layers/msdt-map-layers.component';
+import { MsdtMapLegendComponent } from './components/msdt-map-legends/msdt-map-legends.component';
 
 @Component({
   selector: 'msdt-map',
@@ -20,6 +26,7 @@ import { MsdtMapLayersComponent } from './components/msdt-map-layers/msdt-map-la
     RasterDemSourceComponent,
     LayerComponent,
     MsdtMapLayersComponent,
+    MsdtMapLegendComponent,
   ],
   templateUrl: 'msdt-map.component.html',
   styleUrls: ['msdt-map.component.scss'],
@@ -31,11 +38,19 @@ export class MsdtMapComponent {
   protected readonly selectionService = inject(MsdtStopSelectionService);
   protected readonly opacity = this.mapService.historicalOpacity;
   protected readonly bounds = new LngLatBounds(
-    [106.6285, 56.9571],
-    [109.3616, 58.3127],
+    [107.0903, 57.1724],
+    [108.7928, 58.1167],
   );
 
-  readonly mapLibreSource: string = `https://api.maptiler.com/maps/hybrid/style.json?key=${(import.meta as any).env.NG_APP_MAPTILER_KEY}`;
+  currentMapFilter = signal<FilterSpecification>([
+    'match',
+    ['get', 'category'],
+    ['settlement'],
+    true,
+    false,
+  ]);
+
+  readonly mapLibreSource: string = `https://api.maptiler.com/maps/satellite/style.json?key=${(import.meta as any).env.NG_APP_MAPTILER_KEY}`;
   readonly mapLibreTerrainSource: string = `https://api.maptiler.com/tiles/terrain-rgb-v2/{z}/{x}/{y}.webp?key=${(import.meta as any).env.NG_APP_MAPTILER_KEY}`;
 
   protected readonly stops = this.stopService.stops;

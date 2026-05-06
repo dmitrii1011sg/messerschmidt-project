@@ -4,21 +4,23 @@ import {
   OnChanges,
   SimpleChanges,
   inject,
+  input,
 } from '@angular/core';
 import {
   GeoJSONSourceComponent,
   LayerComponent,
+  ImageComponent,
 } from '@maplibre/ngx-maplibre-gl';
 import bezierSpline from '@turf/bezier-spline';
 import { featureCollection, point, lineString } from '@turf/helpers';
-import { MapLayerMouseEvent } from 'maplibre-gl';
+import { FilterSpecification, MapLayerMouseEvent } from 'maplibre-gl';
 import { MsdtStopSelectionService } from '../../services/msdt-stop-selection.service';
 import { MsdtPoint } from '../../models/msdt-point.model';
 
 @Component({
   selector: 'msdt-map-layers',
   standalone: true,
-  imports: [GeoJSONSourceComponent, LayerComponent],
+  imports: [GeoJSONSourceComponent, LayerComponent, ImageComponent],
   templateUrl: './msdt-map-layers.component.html',
   styleUrls: ['./msdt-map-layers.component.scss'],
 })
@@ -27,6 +29,8 @@ export class MsdtMapLayersComponent implements OnChanges {
 
   routeGeoJson: any = featureCollection([]);
   pointsGeoJson: any = featureCollection([]);
+
+  filter = input<FilterSpecification>();
 
   @Input({ required: true })
   set stops(value: MsdtPoint[] | null) {
@@ -52,7 +56,14 @@ export class MsdtMapLayersComponent implements OnChanges {
 
     if (validStops.length > 0) {
       this.pointsGeoJson = featureCollection(
-        validStops.map((s) => point(s.coordinates, { id: s.id, name: s.name })),
+        validStops.map((s) =>
+          point(s.coordinates, {
+            id: s.id,
+            name: s.name,
+            origin_name: s.origin_name,
+            category: s.category,
+          }),
+        ),
       );
     } else {
       this.pointsGeoJson = featureCollection([]);
