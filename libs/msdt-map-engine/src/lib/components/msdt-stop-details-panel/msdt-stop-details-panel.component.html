@@ -54,7 +54,81 @@
         {{ data.coordinates[0].toFixed(4) }}°E,
         {{ data.coordinates[1].toFixed(4) }}°N
       </div>
+      <div
+        class="my-8 overflow-hidden rounded-xl border border-[#8B4513]/20 bg-[#F4F1EA] shadow-inner"
+      >
+        <div class="bg-[#8B4513]/10 px-4 py-2 border-b border-[#8B4513]/20">
+          <h3
+            class="font-serif text-sm font-bold uppercase tracking-wider text-[#3E2723]"
+          >
+            Географические названия
+          </h3>
+        </div>
 
+        <table class="w-full text-left font-serif text-sm border-collapse">
+          <thead>
+            <tr
+              class="border-b border-[#8B4513]/10 text-[11px] uppercase tracking-tighter text-[#8B4513]/70"
+            >
+              <th class="px-4 py-2 font-normal italic">Источник</th>
+              <th class="px-4 py-2 font-normal italic">
+                Транскрипция / Название
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#8B4513]/5 text-[#3E2723]">
+            <tr>
+              <td
+                class="px-4 py-3 bg-[#8B4513]/5 font-sans text-[11px] font-bold uppercase tracking-tight opacity-60"
+              >
+                Современное
+              </td>
+              <td class="px-4 py-3 font-bold">{{ data.name }}</td>
+            </tr>
+
+            @if (data.names.diary) {
+              <tr>
+                <td
+                  class="px-4 py-3 bg-[#8B4513]/5 font-sans text-[11px] font-bold uppercase tracking-tight opacity-60"
+                >
+                  Дневник (РД)
+                </td>
+                <td
+                  class="px-4 py-3 italic underline decoration-[#8B4513]/20 decoration-dotted underline-offset-4"
+                >
+                  {{ data.names.diary }}
+                </td>
+              </tr>
+            }
+
+            @if (data.names.map) {
+              <tr>
+                <td
+                  class="px-4 py-3 bg-[#8B4513]/5 font-sans text-[11px] font-bold uppercase tracking-tight opacity-60"
+                >
+                  Чертеж (ЧЛ)
+                </td>
+                <td
+                  class="px-4 py-3 italic underline decoration-[#8B4513]/20 decoration-dotted underline-offset-4"
+                >
+                  {{ data.names.map }}
+                </td>
+              </tr>
+            }
+
+            @if (data.names.historical) {
+              <tr>
+                <td
+                  class="px-4 py-3 bg-[#8B4513]/5 font-sans text-[11px] font-bold uppercase tracking-tight opacity-60"
+                >
+                  XVIII век
+                </td>
+                <td class="px-4 py-3">{{ data.names.historical }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
       @if (data.content.quote) {
         <blockquote
           class="relative my-6 pt-8 border-l-4 border-[#8B4513]/40 bg-[#8B4513]/5 py-4 pl-5 pr-4 rounded-r-lg"
@@ -86,9 +160,14 @@
 
       @if (data.images?.length) {
         <div class="mt-8 flex flex-col gap-6 pb-4">
-          @for (img of data.images; track img.url) {
+          @for (img of data.images; track img.url; let i = $index) {
             <figure
-              class="relative group overflow-hidden rounded-xl border border-[#8B4513]/30 shadow-lg bg-[#3E2723]"
+              class="relative group overflow-hidden rounded-xl border border-[#8B4513]/30 shadow-lg bg-[#3E2723] cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-[#8B4513]"
+              role="button"
+              tabindex="0"
+              (click)="openPhotoSwipe(i)"
+              (keydown.enter)="openPhotoSwipe(i)"
+              (keydown.space)="openPhotoSwipe(i); $event.preventDefault()"
             >
               <img
                 [src]="'images/' + img.url"
@@ -96,26 +175,6 @@
                 class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
               />
-
-              <button
-                (click)="onFlyTo(data.coordinates)"
-                class="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#F4F1EA]/90 text-[#8B4513] shadow-md backdrop-blur-md transition-all border border-[#8B4513]/20 hover:bg-[#8B4513] hover:text-[#F4F1EA] hover:scale-110 active:scale-95 focus:outline-none"
-                title="Переместиться к месту съемки"
-              >
-                <svg
-                  class="h-4 w-4 relative right-[1px]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                  />
-                </svg>
-              </button>
 
               @if (img.caption) {
                 <figcaption

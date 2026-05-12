@@ -19,6 +19,7 @@
     "@turf/helpers": "^7.3.5",
     "drag-drop": "link:@angular/cdk/drag-drop",
     "maplibre-gl": "^5.23.0",
+    "photoswipe": "^5.4.4",
     "rxjs": "~7.8.0"
   },
   "devDependencies": {

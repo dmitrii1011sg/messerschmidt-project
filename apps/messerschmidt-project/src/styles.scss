@@ -4,3 +4,9 @@
 
 /* You can add global styles to this file, and also import other style files */
 @import 'maplibre-gl/dist/maplibre-gl.css';
+@import 'photoswipe/dist/photoswipe.css';
+
+.pswp {
+  --pswp-bg: #1a1512;
+  --pswp-placeholder-color: #eae6df;
+}

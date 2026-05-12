@@ -21,6 +21,11 @@ export interface MsdtPointContent {
 export interface MsdtPoint {
   id: string;
   name: string;
+  names: {
+    diary: string;
+    map: string;
+    historical: string;
+  };
   origin_name: string;
   date?: string;
   coordinates: [number, number];

@@ -3,48 +3,148 @@
 >
   <msdt-map class="absolute inset-0 z-0"></msdt-map>
   <msdt-stop-details></msdt-stop-details>
+
   <header
-    class="pointer-events-none absolute left-0 right-0 top-0 z-10 flex flex-col items-center justify-between p-4 md:flex-row md:p-6 text-center md:text-left drop-shadow-md"
+    class="pointer-events-none absolute left-0 right-0 top-0 z-10 flex flex-col items-center justify-between p-4 md:flex-row md:p-6 drop-shadow-md"
   >
     <div
-      class="pointer-events-auto rounded-lg bg-[#F4F1EA]/90 px-5 py-3 backdrop-blur-md border border-[#8B4513]/20 shadow-lg"
+      class="pointer-events-auto rounded-lg bg-[#F4F1EA] px-5 py-3 border border-[#8B4513]/20 shadow-lg"
     >
       <h1 class="font-serif text-xl md:text-2xl font-bold text-[#3E2723]">
         Путешествие Д.Г. Мессершмидта
       </h1>
-      <p class="font-serif text-md italic text-[#5D4037] mt-1">
+      <p class="font-serif text-sm italic text-[#5D4037] mt-1">
         Экспедиция по реке Лена (23 - 27 сентября 1723 г.)
       </p>
-      <p class="font-serif text-xs italic text-[#5D4037] mt-1">
-        © СПбФ АРАН. Ф. 98. Оп. 1. Д. 24. Л. 1–5. Д. Г. Мессершмидт.
-        Схематический чертеж р. Лены. [1723 г.]
-      </p>
+
+      <div
+        class="mt-2 flex items-center gap-4 border-t border-[#8B4513]/10 pt-2"
+      >
+        <p class="font-serif text-[10px] text-[#5D4037] italic">
+          © СПбФ АРАН. Ф. 98. Оп. 2. Д. 24. Л. 1–5 | © Д. С. Горшков,
+          техническая разработка, 2026
+        </p>
+        <button
+          (click)="toggleSources()"
+          class="text-[10px] font-bold uppercase tracking-wider text-[#8B4513] underline decoration-dotted"
+        >
+          Источники
+        </button>
+      </div>
     </div>
 
     <div
-      class="pointer-events-auto mt-2 md:mt-0 hidden md:block rounded-lg bg-[#F4F1EA]/90 px-4 py-2 backdrop-blur-md border border-[#8B4513]/20"
+      class="pointer-events-auto mt-2 md:mt-0 hidden md:block rounded-lg bg-[#F4F1EA] px-4 py-2 border border-[#8B4513]/20"
     >
       <span class="text-xs font-bold uppercase tracking-wider text-[#8B4513]">
-        Миллеровские чтения
+        Миллеровские чтения 2026
       </span>
     </div>
   </header>
 
+  @if (showSources()) {
+    <div
+      class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4"
+      role="presentation"
+      tabindex="0"
+      (click)="toggleSources()"
+      (keydown.enter)="toggleSources()"
+      (keydown.escape)="toggleSources()"
+    >
+      <div
+        class="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-[#F4F1EA] p-6 shadow-2xl border border-[#8B4513]"
+        role="presentation"
+        (click)="$event.stopPropagation()"
+      >
+        <button
+          (click)="toggleSources()"
+          class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-[#8B4513] hover:bg-[#8B4513]/10 active:scale-95 transition-all"
+          aria-label="Закрыть"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="h-5 w-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              pathLength="1"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <h2 class="font-serif text-lg font-bold text-[#3E2723] mb-4">
+          Источники
+        </h2>
+        <div class="space-y-3 font-serif text-xs leading-normal text-[#5D4037]">
+          <p>
+            Описание маршрута цитируется по переводу путевого дневника Д. Г.
+            Мессершмидта: Мессершмидт Д. Г. Дневники: от Мангазеи до Иркутска
+            (1723 г.) / пер. с нем.; подг. к публ. Ю. И. Чивтаева. Иркутск: «На
+            Чехова», 2018. С. 149–153.
+          </p>
+          <p>
+            Оригинальные названия населенных пунктов, записанные Д. Г.
+            Мессершмидтом, приводятся по источникам:
+          </p>
+          <ul class="list-disc pl-4 space-y-2">
+            <li>
+              рукопись путевого дневника Д. Г. Мессершмидта из
+              Санкт-Петербургского филиала Архива Российской академии наук
+              (23–27 сентября 1723 г.): СПбФ АРАН. Ф. 98. Оп. 1. Д. 2. Л.
+              189–195 (далее — РД);
+            </li>
+            <li>
+              раздел «Hodogeticum» из рукописи Д. Г. Мессершмидта «Sibiria
+              Perlustrata»: Messerschmidt D. G. Sibiria Perlustrata, etc.
+              [Факсимильное издание]. СПб.: «Коло», 2020. Л. 36–37. Опубл.:
+              [Messerschmidt D. G.] Hodogeticum, etc. / публ. В. Лефельдта //
+              «Sibiria Perlustrata» Д. Г. Мессершмидта — энциклопедическое
+              описание Сибири Петровской эпохи: [коллективная монография] / под
+              ред. Л. Д. Бондарь, И. В. Тункиной. 2-е изд., испр. СПб.: «Реноме,
+              2023». (Ad fontes. Материалы и исследования по истории науки;
+              suppl. 14). С. 95 (далее — SP);
+            </li>
+            <li>
+              схематический чертеж р. Лены, представленный в качестве верхнего
+              слоя карты: СПбФ АРАН. Ф. 98. Оп. 2. Д. 24. Л. 1–5; опубл.:
+              Бонддарь Л. Д., Иодко О. В., Красникова О. А. Постижение России.
+              Топография Сибири XVIII в. в графических документах Даниэля
+              Готлиба Мессершмидта и Второй Камчатской экспедиции в
+              Санкт-Петербургском филиале Архива Российской академии наук / под
+              общ. ред. И. В. Тункиной. СПб.: «Реноме», 2023. (Ad fontes.
+              Материалы и исследования по истории науки; suppl. 12). С. 84–85
+              (далее — ЧЛ)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  }
+
   <div
-    class="absolute bottom-4 left-4 right-4 z-20 md:bottom-8 md:left-8 md:right-auto md:w-80 rounded-xl bg-[#F4F1EA]/95 p-5 shadow-xl backdrop-blur-md border-2 border-[#8B4513]/10"
+    class="absolute bottom-4 left-4 right-4 z-20 md:bottom-8 md:left-8 md:right-auto md:w-80 rounded-xl bg-[#F4F1EA] p-5 shadow-xl border border-[#8B4513]/10"
   >
     <div
       class="mb-3 flex items-center justify-between border-b border-[#8B4513]/10 pb-2"
     >
-      <span class="font-serif text-sm font-bold tracking-wide text-[#5D4037]">
-        Карта из дневника
-      </span>
+      <span class="font-serif text-sm font-bold text-[#5D4037]"
+        >Карта из дневника</span
+      >
       <span class="font-mono text-sm font-bold text-[#8B4513]">
         {{ (opacity() * 100).toFixed(0) }}%
       </span>
     </div>
-
-    <msdt-opacity-slider [min]="0" [max]="1" [step]="0.01" [(value)]="opacity">
-    </msdt-opacity-slider>
+    <msdt-opacity-slider
+      [min]="0"
+      [max]="1"
+      [step]="0.01"
+      [(value)]="opacity"
+    ></msdt-opacity-slider>
   </div>
 </main>

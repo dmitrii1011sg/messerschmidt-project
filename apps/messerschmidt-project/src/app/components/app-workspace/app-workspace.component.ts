@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   MsdtMapComponent,
   MsdtMapService,
@@ -15,4 +15,10 @@ import { MsdtOpacitySlider } from '@msdt/ui-kit';
 export class AppWorkspace {
   private readonly mapService = inject(MsdtMapService);
   protected opacity = this.mapService.historicalOpacity;
+
+  showSources = signal(false);
+
+  toggleSources(): void {
+    this.showSources.set(!this.showSources());
+  }
 }
