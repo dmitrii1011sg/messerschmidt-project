@@ -3,6 +3,11 @@
     "id": "0",
     "name": "Деревня Чечуйск",
     "origin_name": "Tschetschuyschky-ostrog",
+    "names": {
+      "diary": "Tschugoyschka (РД)",
+      "map": "Tschetschuyschky-ostrog (ЧЛ)",
+      "historical": "Tschetschuyschky-ostrog (SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.69749411743082, 58.07220882832552],
     "category": "settlement",
@@ -15,6 +20,11 @@
     "id": "1",
     "name": "Река Мельничная (ныне Бабошкина)",
     "origin_name": "Melnischna-reka",
+    "names": {
+      "diary": "Melnischna (РД)",
+      "map": "Melnischna-reka (ЧЛ)",
+      "historical": "Melnischna-reka (SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.63367382327735, 58.05343666832983],
     "category": "river",
@@ -28,6 +38,10 @@
     "id": "p1",
     "name": "Деревня Банщикова",
     "origin_name": "Banschikowska",
+    "names": {
+      "diary": "Banschikowska-deréwna (РД)",
+      "map": "Banschikowska (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.62013808223121, 58.02149284163266],
     "category": "settlement",
@@ -45,6 +59,10 @@
     "id": "i",
     "name": "Деревня Горбова",
     "origin_name": "Gorbowa",
+    "names": {
+      "diary": "Gorbowa-deréwna (РД)",
+      "map": "Gorbowa (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.60195061657821, 58.01077053977127],
     "category": "settlement",
@@ -56,6 +74,10 @@
     "id": "p2",
     "name": "Деревня Никулина",
     "origin_name": "Miskulina",
+    "names": {
+      "diary": "Mikulinah-deréwna (РД)",
+      "map": "Miskulina (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.5928561764248, 57.98851695085648],
     "category": "settlement",
@@ -72,7 +94,11 @@
   {
     "id": "p3",
     "name": "Деревня Подъельная",
-    "origin_name": "Podelnischna-derewny",
+    "origin_name": "Podelnischna-derewna",
+    "names": {
+      "diary": "Podélnik, Podélnischna-deréwna (РД)",
+      "map": "Podelnischna-derewna (SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.55122779708383, 57.992823100077985],
     "category": "settlement",
@@ -85,6 +111,10 @@
     "id": "p4",
     "name": "Троицкая Мельница",
     "origin_name": "Troitzka-Melnitza",
+    "names": {
+      "diary": "Troizka-Mélnitza (РД)",
+      "map": "Troitzka-Melnitza (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.58356226130337, 57.95590259580719],
     "category": "settlement",
@@ -97,6 +127,10 @@
     "id": "p4_r",
     "name": "Река Кутулак",
     "origin_name": "Katalaka-reçzka",
+    "names": {
+      "diary": "Kotoláka (РД)",
+      "map": "Katalaka-reçzka (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.58265386418432, 57.95188572968301],
     "category": "river",
@@ -109,6 +143,10 @@
     "id": "p5_11",
     "name": "Деревня Алымовка",
     "origin_name": "Polowinska",
+    "names": {
+      "diary": "Polowínska-deréwna (РД)",
+      "map": "Polowinska (SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.57723759333138, 57.96188206778889],
     "category": "settlement",
@@ -119,7 +157,11 @@
   {
     "id": "p5",
     "name": "Деревня Подкаменная",
-    "origin_name": "Podkamenna-derewny",
+    "origin_name": "Podkamenna-derewna",
+    "names": {
+      "diary": "Podkámenna deréwna (РД)",
+      "map": "Podkamenna-derewna (SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.52801951648345, 57.963382805884315],
     "category": "settlement",
@@ -132,7 +174,11 @@
   {
     "id": "p5_1",
     "name": "Камень, или Щелье",
-    "origin_name": "Soltikowskoikamen oder Stschölie",
+    "origin_name": "Kamen oder Stschölie",
+    "names": {
+      "diary": "Stschölie (РД)",
+      "map": "Soltikowskoikamen oder Stschölie (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.50176069909219, 57.95468522421917],
     "category": "mountain",
@@ -157,6 +203,10 @@
     "id": "p7",
     "name": "Деревня Салтыкова",
     "origin_name": "Soltikowska-derewna",
+    "names": {
+      "diary": "Soltikówa-deréwna (РД)",
+      "map": "Soltikowska-derewna (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.47692391689385, 57.94573983672661],
     "category": "settlement",
@@ -186,6 +236,10 @@
     "id": "p10",
     "name": "Деревня Алексеевка",
     "origin_name": "Alexiewska-derewna",
+    "names": {
+      "diary": "Alexiéwska-deréwna (РД)",
+      "map": "Alexiewska-derewna (ЧЛ, SP)"
+    },
     "date": "1723-09-23",
     "coordinates": [108.3773566087711, 57.85475144029171],
     "category": "settlement",
@@ -201,6 +255,10 @@
     "id": "p14",
     "name": "Деревня Змеиново",
     "origin_name": "Smyina derewna",
+    "names": {
+      "diary": "Smyina-deréwna (РД)",
+      "map": "Smyina derewna (ЧЛ, SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.30623512879514, 57.77773621098576],
     "category": "settlement",
@@ -237,6 +295,10 @@
     "id": "p15",
     "name": "Устье Черепанова",
     "origin_name": "Tscherepanowa-reçzka",
+    "names": {
+      "diary": "Tscherepanowa (РД)",
+      "map": "Tscherepanowa-reçzka (ЧЛ, SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.29488482350588, 57.755357115681214],
     "category": "river",
@@ -250,6 +312,10 @@
     "id": "p16",
     "name": "Васильева Мысовского заимка",
     "origin_name": "Wassilowa oder Mussowka-Saymka",
+    "names": {
+      "diary": "Wasilowa-Mysowska-Saymka (РД)",
+      "map": "Wassilowa oder Mussowka-Saymka (ЧЛ, SP)"
+    },
     "date": "1723-09-24",
     "category": "settlement",
     "content": {
@@ -261,6 +327,10 @@
     "id": "p18",
     "name": "Никола Камень",
     "origin_name": "Nicola-kamen",
+    "names": {
+      "diary": "Nicola-kamen (РД)",
+      "map": "Nicola-kamen (SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.23989731751396, 57.76601583165532],
     "category": "mountain",
@@ -273,6 +343,10 @@
     "id": "p19",
     "name": "Никольская заимка",
     "origin_name": "Nicola-Saimka",
+    "names": {
+      "diary": "Nikola-Saýmka (РД)",
+      "map": "Nicola-Saimka (SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.19070649901802, 57.76460837858974],
     "category": "settlement",
@@ -289,6 +363,10 @@
     "id": "6",
     "name": "Устье Киренги",
     "origin_name": "Kyrenniæ-reka",
+    "names": {
+      "diary": "Kýrennjæ (РД)",
+      "map": "Kyrenniæ-reka (SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.12524633853451, 57.768349515305836],
     "category": "river",
@@ -300,6 +378,10 @@
   {
     "id": "7",
     "name": "Троицкий Монастырь",
+    "names": {
+      "diary": "Troitza-Monastir (РД)",
+      "map": "Troitza-Monastir (SP)"
+    },
     "date": "1723-09-24",
     "category": "geography",
     "content": {
@@ -311,6 +393,10 @@
   {
     "id": "9",
     "name": "Монастырская мельница",
+    "names": {
+      "diary": "Monastirska-Melnitza (РД)",
+      "map": "Monastirska-Melnitza (SP)"
+    },
     "date": "1723-09-24",
     "category": "geography",
     "content": {
@@ -322,6 +408,10 @@
   {
     "id": "p20",
     "name": "Киренский погост",
+    "names": {
+      "diary": "Kýrenniæ-Powós (РД)",
+      "map": "Kyrenniæ-powoss, Ylimskischen districts in Tungusien (SP)"
+    },
     "origin_name": "Kyrenniæ-powoss, Ylimskischen districts in Tungusien",
     "date": "1723-09-24",
     "coordinates": [108.11635053545432, 57.7741027887221],
@@ -341,6 +431,10 @@
     "id": "10",
     "name": "Деревня Балахна",
     "origin_name": "Balachna derewna",
+    "names": {
+      "diary": "Balaàchnah-deréwna (РД)",
+      "map": "Balachna derewna (SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.08272902002254, 57.77417284177705],
     "category": "settlement",
@@ -354,6 +448,10 @@
     "id": "11",
     "name": "Деревня Воронина",
     "origin_name": "Woronina derewna",
+    "names": {
+      "diary": "Worónninah-deréwna (РД)",
+      "map": "Woronina derewna (SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.0851710587417, 57.78106840794404],
     "category": "settlement",
@@ -367,6 +465,10 @@
     "id": "p21",
     "name": "Деревня Хабарова",
     "origin_name": "Chabarowa derewna",
+    "names": {
+      "diary": "Chabarówa-deréwna (РД)",
+      "map": "Chabarowa derewna (SP)"
+    },
     "date": "1723-09-24",
     "coordinates": [108.03542052231998, 57.770009684632285],
     "category": "settlement",
@@ -393,6 +495,10 @@
     "id": "p23",
     "name": "Поларотская слобода",
     "origin_name": "Polarotzka-Slobody",
+    "names": {
+      "diary": "Polarótska-Sláboda (РД)",
+      "map": "Polarotzka-Slobody (SP)"
+    },
     "date": "1723-09-24",
     "category": "geography",
     "coordinates": [108.01972740161798, 57.73173078309937],
@@ -429,6 +535,10 @@
     "id": "p27",
     "name": "Василия Кудрина заимка",
     "origin_name": "Cudrina-Saymka",
+    "names": {
+      "diary": "Wasil-Kúdrina-Saymka (РД)",
+      "map": "Cudrina-Saymka (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.94697849224626, 57.651472872660584],
     "category": "settlement",
@@ -441,6 +551,10 @@
     "id": "15",
     "name": "Обухов Остров",
     "origin_name": "Obuchowa-ostrow",
+    "names": {
+      "diary": "Obúchowa-Ostrów (РД)",
+      "map": "Obuchowa-ostrow (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.90374798221725, 57.66067008656801],
     "category": "mountain",
@@ -453,6 +567,10 @@
     "id": "p28",
     "name": "Чертовская заимка",
     "origin_name": "Schortowska-Saymka",
+    "names": {
+      "diary": "Tschortówska-Saýmka (РД)",
+      "map": "Schortowska-Saymka (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.86537193144827, 57.664848775778516],
     "category": "settlement",
@@ -468,6 +586,10 @@
     "id": "p29",
     "name": "устье Межевая",
     "origin_name": "Meshowáya-reçzka",
+    "names": {
+      "diary": "Meshowáya (РД)",
+      "map": "Meshowáya-reçzka (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.74874893387025, 57.64146588553461],
     "category": "river",
@@ -504,6 +626,10 @@
     "id": "p30",
     "name": "Монакова заимка",
     "origin_name": "Monackowa-Saymka",
+    "names": {
+      "diary": "Monakówa-Saymka (РД)",
+      "map": "Monackowa-Saymka (SP)"
+    },
     "coordinates": [107.69031096270679, 57.599159577931374],
     "date": "1723-09-25",
     "category": "settlement",
@@ -517,6 +643,10 @@
     "name": "Монаков остров",
     "coordinates": [107.67977018364881, 57.58809888896258],
     "origin_name": "Monackowa ostrow",
+    "names": {
+      "diary": "Monakówa-Ostrów (РД)",
+      "map": "Monackowa ostrow (SP)"
+    },
     "date": "1723-09-25",
     "category": "mountain",
     "content": {
@@ -528,6 +658,10 @@
     "id": "p31",
     "name": "Лазарева заимка",
     "origin_name": "Lazarowa Saymka",
+    "names": {
+      "diary": "Lásarowa-Saýmka (РД)",
+      "map": "Lazarowa Saymka (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.6938244546621, 57.564733659715],
     "category": "settlement",
@@ -540,6 +674,10 @@
     "id": "p32",
     "name": "Лаврентьева заимка",
     "origin_name": "Lawrintina-Saymky",
+    "names": {
+      "diary": "Lawríntina-Saýmka (РД)",
+      "map": "Lawrintina-Saymky (SP)"
+    },
     "coordinates": [107.73006004661688, 57.56435024916242],
     "date": "1723-09-25",
     "category": "settlement",
@@ -552,6 +690,10 @@
     "id": "p33",
     "name": "Вологдина заимка",
     "origin_name": "Wologdina-Saymky",
+    "names": {
+      "diary": "Wológdina-Saymka (РД)",
+      "map": "Wologdina-Saymky (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.81437185096566, 57.58893921670796],
     "category": "settlement",
@@ -564,6 +706,10 @@
     "id": "p34",
     "name": "Деревня Кривая Лука",
     "origin_name": "Krywolucka-derewna",
+    "names": {
+      "diary": "Kriwolucka-deréwna (РД)",
+      "map": "Krywolucka-derewna (SP)"
+    },
     "date": "1723-09-25",
     "coordinates": [107.82418076203166, 57.5987570681181],
     "category": "settlement",
@@ -580,6 +726,10 @@
     "id": "p35",
     "name": "Деревня Заборная",
     "origin_name": "Sa-Borna-derewna",
+    "names": {
+      "diary": "Sabórna-deréwna (РД)",
+      "map": "Sa-Borna-derewna (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.85033877959314, 57.59420381192461],
     "category": "settlement",
@@ -596,6 +746,10 @@
     "id": "p36",
     "name": "Олонцова заимка",
     "origin_name": "Monzowa-Saymka",
+    "names": {
+      "diary": "Alónzowa Saymka (РД)",
+      "map": "Monzowa-Saymka (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.89463065590834, 57.53599284925849],
     "category": "settlement",
@@ -608,6 +762,10 @@
     "id": "p37",
     "name": "Деревня Скобельская",
     "origin_name": "Skobilska derewna, und Wolock",
+    "names": {
+      "diary": "Skobílskaja deréwna (РД)",
+      "map": "Skobilska derewna, und Wolock (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.88292705705766, 57.514788409673145],
     "category": "settlement",
@@ -623,6 +781,10 @@
     "id": "p38",
     "name": "Деревня Макарова",
     "origin_name": "Macarowa derewna",
+    "names": {
+      "diary": "Makárowa-deréwna (РД)",
+      "map": "Macarowa derewna (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.82370822711756, 57.4839587952616],
     "category": "settlement",
@@ -638,6 +800,10 @@
     "id": "p39_1",
     "name": "Балашова заимка",
     "origin_name": "Balaschowa-Saymka",
+    "names": {
+      "diary": "Balaschówa-Saymka (РД)",
+      "map": "Balaschowa-Saymka (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.79835065702271, 57.48321772103583],
     "category": "settlement",
@@ -650,6 +816,10 @@
     "id": "p39_2",
     "name": "Деревня Панская",
     "origin_name": "Bansskaja-derewna",
+    "names": {
+      "diary": "Banskaja-deréwna (РД)",
+      "map": "Bansskaja-derewna (SP)"
+    },
     "coordinates": [107.78116231885448, 57.47413952658019],
     "date": "1723-09-26",
     "category": "settlement",
@@ -662,6 +832,10 @@
     "id": "p39_3",
     "name": "Бочкарёва заимка",
     "origin_name": "Botsskarowa-Saymky",
+    "names": {
+      "diary": "Botschkarówa-Saymka (РД)",
+      "map": "Botsskarowa-Saymky (SP)"
+    },
     "date": "1723-09-26",
     "category": "settlement",
     "content": {
@@ -697,6 +871,10 @@
     "id": "p40",
     "name": "Карасёва заимка",
     "origin_name": "Carassowa-Saymky",
+    "names": {
+      "diary": "Carássowa-Saymka (РД)",
+      "map": "Carassowa-Saymky (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.73055956403267, 57.46016512797514],
     "category": "settlement",
@@ -709,6 +887,10 @@
     "id": "p41",
     "name": "Любавинская заимка",
     "origin_name": "Lubowinska-Saymky",
+    "names": {
+      "diary": "Lubáwinska-Saymka (РД)",
+      "map": "Lubowinska-Saymky (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.62688574208401, 57.398691645193686],
     "category": "settlement",
@@ -722,6 +904,10 @@
     "id": "p43",
     "name": "Потаповская заимка",
     "origin_name": "Potapowska-Saymky",
+    "names": {
+      "diary": "Potápowska-Saymka (РД)",
+      "map": "Potapowska-Saymky (SP)"
+    },
     "date": "1723-09-26",
     "coordinates": [107.52601683922343, 57.381789466038406],
     "category": "settlement",
@@ -738,6 +924,10 @@
     "id": "p44",
     "name": "Левоновская заимка",
     "origin_name": "Lewonnowska-Saymky",
+    "names": {
+      "diary": "Lewónnowska-Saýmka (РД)",
+      "map": "Lewonnowska-Saymky (SP)"
+    },
     "coordinates": [107.54559876446726, 57.3442877296364],
     "date": "1723-09-26",
     "category": "settlement",
@@ -751,6 +941,10 @@
     "id": "p46",
     "name": "Красноярская заимка",
     "origin_name": "Krassnoyarskina-Saymky",
+    "names": {
+      "diary": "Krasnoyarskina-Saýmka (РД)",
+      "map": "Krassnoyarskina-Saymky (SP)"
+    },
     "date": "1723-09-27",
     "coordinates": [107.45811623344665, 57.33780467486659],
     "category": "settlement",
@@ -780,6 +974,10 @@
     "id": "p47",
     "name": "Казимировская заимка",
     "origin_name": "Casimirowska-Saymka",
+    "names": {
+      "diary": "Casímirowska-Saýmka (РД)",
+      "map": "Casimirowska-Saymka (SP)"
+    },
     "date": "1723-09-27",
     "coordinates": [107.44748997988508, 57.281551671154695],
     "category": "settlement",
@@ -806,6 +1004,10 @@
     "id": "p48",
     "name": "Улькана заимка",
     "origin_name": "Ulkan-Saymky",
+    "names": {
+      "diary": "Ulkan-Saymka (РД)",
+      "map": "Ulkan-Saymky (SP)"
+    },
     "date": "1723-09-27",
     "coordinates": [107.32201043978945, 57.243722330794874],
     "category": "settlement",
@@ -837,6 +1039,10 @@
     "id": "p49",
     "name": "Тура-заимка",
     "origin_name": "Tyra-Saymky",
+    "names": {
+      "diary": "Tyrah-Saýmka (РД)",
+      "map": "Tyra-Saymky (ЧЛ, SP)"
+    },
     "date": "1723-09-27",
     "coordinates": [107.21769487091399, 57.27436002075379],
     "category": "settlement",
